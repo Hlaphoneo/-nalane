@@ -8,7 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { OrderPage } from '../pages/order/order';
 import { NewOrderPage } from '../pages/new-order/new-order';
+import { LoginPage } from '../pages/login/login';
 import { OrderReadyPage } from '../pages/order-ready/order-ready';
+import { PasswordResetPage } from '../pages/password-reset/password-reset';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { OrderReadyPage } from '../pages/order-ready/order-ready';
     HomePage,
     OrderPage,
     OrderReadyPage,
-    NewOrderPage
+    NewOrderPage,
+    LoginPage,
+    PasswordResetPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { OrderReadyPage } from '../pages/order-ready/order-ready';
     HomePage,
     OrderPage,
     OrderReadyPage,
-    NewOrderPage
+    NewOrderPage,
+    LoginPage,
+    PasswordResetPage
   ],
   providers: [
     StatusBar,

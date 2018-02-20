@@ -11,6 +11,10 @@ import { HomePage } from '../pages/home/home';
 import { OrderPage } from '../pages/order/order';
 import { NewOrderPage } from '../pages/new-order/new-order';
 import { OrderReadyPage } from '../pages/order-ready/order-ready';
+import { LoginPage } from '../pages/login/login';
+import { PasswordResetPage } from '../pages/password-reset/password-reset';
+
+
 
 
 
@@ -19,8 +23,7 @@ import { OrderReadyPage } from '../pages/order-ready/order-ready';
 })
 export class MyApp {
   @ViewChild('content') navCtrl: NavController;
-  rootPage:any = OrderReadyPage;
-
+  rootPage:any = PasswordResetPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       statusBar.styleDefault();
