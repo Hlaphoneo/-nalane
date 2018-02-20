@@ -1,14 +1,116 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
+  <div class="top-container">
+    <div class="">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <button style="height:42px;width:50px;margin-top:8px;background-color:#FFFFFF; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+              <ion-icon name="menu" style="font-size:25px;"> </ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-10>
+            <ion-searchbar
+               animated = true;
+            ></ion-searchbar>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </div>
+  </div>
+  <ion-fab class="fab-middle" middle center ><button ion-fab mini><ion-icon name="locate"></ion-icon></button></ion-fab>
+  <div class="bottom-container">
+    <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="kittens">
+        <span item-end><ion-icon class="star1" name="car"></ion-icon></span>
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        <span item-end><ion-icon class="star1" name="star"></ion-icon></span>
+      </ion-segment-button>
+      <ion-segment-button value="history">
+      <span item-end><ion-icon class="star1" name="timer"></ion-icon></span>
+      </ion-segment-button>
+    </ion-segment>
+    </div>
+
+    <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'puppies'">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <h2>Ruby</h2>
+        </ion-item>
+        ...
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'kittens'">
+        <ion-list class="list-container">
+          <ion-item class="item" no-lines>
+            <ion-thumbnail item-start>
+              <img src="http://lorempixel.com/100/100">
+            </ion-thumbnail>
+            <h2 class="name"  >Forescent</h2>
+            <h2 class="status"><small>Available</small></h2>
+            <span item-end>
+              <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star2" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
+            </span>
+          </ion-item>
+          <ion-item class="item" no-lines>
+            <ion-thumbnail item-start>
+              <img src="http://lorempixel.com/100/100">
+            </ion-thumbnail>
+            <h2 class="name"  >Forescent</h2>
+            <h2 class="status"><small>Available</small></h2>
+            <span item-end>
+              <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star2" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star2" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
+            </span>
+          </ion-item>
+          <ion-item class="item" no-lines>
+            <ion-thumbnail item-start>
+              <img src="http://lorempixel.com/100/100">
+            </ion-thumbnail>
+            <h2 class="name"  >Forescent</h2>
+            <h2 class="status"><small>Available</small></h2>
+            <span item-end>
+              <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star2" name="star"></ion-icon></span>
+              <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
+            </span>
+          </ion-item>
+        </ion-list>
+      </ion-list>
+      <ion-list *ngSwitchCase="'history'">
+        <ion-item class="item" no-lines>
+          <ion-thumbnail item-start>
+            <img src="http://lorempixel.com/100/100">
+          </ion-thumbnail>
+          <h2 class="name"  >Forescent</h2>
+          <h2 class="status"><small>Available</small></h2>
+          <span item-end>
+            <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+            <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
+            <span  item-end> <ion-icon class="star2" name="star"></ion-icon></span>
+            <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
+          </span>
+        </ion-item>
+      </ion-list>
+
+
+
+    </div>
+
+
+
+  </div>
 </ion-content>

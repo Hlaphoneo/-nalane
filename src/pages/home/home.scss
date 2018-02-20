@@ -1,3 +1,44 @@
 page-home {
+  .top-container{
+    width: 100%;
+    height: 45%;
+    background-image:url("../assets/imgs/map.png");
+    background-size: cover;
 
+  }
+  .bottom-container{
+    height: 55%;
+    overflow: scroll;
+    background-color: #F2F2F2;
+  }
+
+}
+
+.list-container{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+
+.item{
+  // background-color: black;
+  border-radius: 5px;
+}
+
+.name{
+  margin-top: -10px ;
+}
+
+.item{
+  margin-top: 5px;
+}
+.star1{
+  color: #F53D3D;
+}
+.star2,.star3{
+  color: #A3A8AE;
+}
+.fab-middle{
+  margin-top: -60px !important;
 }
