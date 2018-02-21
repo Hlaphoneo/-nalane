@@ -1,0 +1,46 @@
+page-sign-up {
+  ion-label{
+    letter-spacing: 2px;
+  }
+
+  .welcome{
+    color: white;
+    margin-top: 30px !important;
+  }
+
+  .main-container{
+    background-color: #00B2AA;
+  }
+  .form{
+    margin-top: 40px;
+    margin-left: -15px;
+  }
+
+  .form-input{
+    background: #00B2AA
+  }
+
+  .app-title{
+    color: white;
+    margin-top: 5% !important;
+    font-family: 'Lobster', cursive;
+    font-size: 55px;
+    font-weight: 200;
+  }
+  .button-signin{
+    background: #007B73;
+    height: 45px;
+    font-weight: 300;
+    margin-top: 15px;
+    letter-spacing: 2px;
+  }
+  .password-forgot{
+    color: white;
+    font-weight: 400;
+    margin-top: 23px;
+    letter-spacing: 2px;
+  }
+
+
+
+}

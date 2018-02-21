@@ -11,13 +11,12 @@
         <ion-input type="password" style="color:white"></ion-input>
       </ion-item>
   </div>
-  <button class="button-signin" ion-button full>Sign in</button>
-  <h6 align="center" class="password-forgot"><small>SIGN UP ?</small></h6>
-  <h6 align="center" class="password-forgot" style="margin-top:15px"><small>FORGOT YOUR PASSWORD ?</small></h6>
+  <button class="button-signin" ion-button full style="color:white">Sign in</button>
+  <h6 align="center" class="password-forgot" (click)="gotoSignup()" ><small>SIGN UP ?</small></h6>
+  <h6 align="center" class="password-forgot" style="margin-top:15px" (click)="gotoForgotPassword()"><small>FORGOT YOUR PASSWORD ?</small></h6>
 
   <div id="bubbles">
         <div class="bubble x1"></div>
-        <div class="bubble x2"></div>
         <div class="bubble x3"></div>
         <div class="bubble x4"></div>
         <div class="bubble x5"></div>

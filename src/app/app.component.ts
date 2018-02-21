@@ -13,6 +13,7 @@ import { NewOrderPage } from '../pages/new-order/new-order';
 import { OrderReadyPage } from '../pages/order-ready/order-ready';
 import { LoginPage } from '../pages/login/login';
 import { PasswordResetPage } from '../pages/password-reset/password-reset';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 
 
 
@@ -23,7 +24,7 @@ import { PasswordResetPage } from '../pages/password-reset/password-reset';
 })
 export class MyApp {
   @ViewChild('content') navCtrl: NavController;
-  rootPage:any = PasswordResetPage;
+  rootPage:any = LoginPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       statusBar.styleDefault();
