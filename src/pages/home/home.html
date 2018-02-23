@@ -23,31 +23,21 @@
   <ion-fab class="fab-middle" middle center ><button ion-fab mini><ion-icon name="locate"></ion-icon></button></ion-fab>
   <div class="bottom-container">
     <div padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="kittens">
+    <ion-segment [(ngModel)]="gat">
+      <ion-segment-button value="providers">
         <span item-end><ion-icon class="star1" name="car"></ion-icon></span>
       </ion-segment-button>
-      <ion-segment-button value="puppies">
+      <ion-segment-button value="favourites">
         <span item-end><ion-icon class="star1" name="star"></ion-icon></span>
       </ion-segment-button>
-      <ion-segment-button value="history">
+      <ion-segment-button value="orders">s
       <span item-end><ion-icon class="star1" name="timer"></ion-icon></span>
       </ion-segment-button>
     </ion-segment>
     </div>
 
-    <div [ngSwitch]="pet">
-      <ion-list *ngSwitchCase="'puppies'">
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="img/thumbnail-puppy-1.jpg">
-          </ion-thumbnail>
-          <h2>Ruby</h2>
-        </ion-item>
-        ...
-      </ion-list>
-
-      <ion-list *ngSwitchCase="'kittens'">
+    <div [ngSwitch]="gat">
+      <ion-list *ngSwitchCase="'providers'">
         <ion-list class="list-container">
           <ion-item class="item" no-lines>
             <ion-thumbnail item-start>
@@ -90,7 +80,17 @@
           </ion-item>
         </ion-list>
       </ion-list>
-      <ion-list *ngSwitchCase="'history'">
+      <ion-list *ngSwitchCase="'favourites'">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <h2>Ruby</h2>
+        </ion-item>
+        ...
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'orders'">
         <ion-item class="item" no-lines>
           <ion-thumbnail item-start>
             <img src="http://lorempixel.com/100/100">

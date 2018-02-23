@@ -1,10 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { Platform} from 'ionic-angular';
-import { NavController } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { Platform, NavController , Events} from 'ionic-angular';
 
 //native
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+//services
+import {AppProvider} from "../providers/app/app";
 
 //components
 import { HomePage } from '../pages/home/home';
@@ -16,22 +18,30 @@ import { PasswordResetPage } from '../pages/password-reset/password-reset';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 
 
-
-
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild('content') navCtrl: NavController;
-  rootPage:any = LoginPage;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  rootPage:any; //starting page of the application
+  constructor(public events : Events, public app : AppProvider, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
+      //Configuring some native stuff
       statusBar.styleDefault();
       splashScreen.hide();
-    });
-    //
-    // this.navCtrl.setRoot(OrderPage)
 
+      //starting application
+      this.appStart()
+    });
+  }
+  appStart(){
+    //If user is not loggded in listen to the login invent. This is also used to log out the user
+    this.events.subscribe("loginstate",(loginState)=>{
+        if(loginState == true)
+          this.rootPage = HomePage;
+        else
+          this.rootPage = LoginPage;
+    })
+    //Application entry
+    this.app.appStart()
   }
 }

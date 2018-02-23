@@ -6,9 +6,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
-  }
+  gat : any;
+  constructor(public navCtrl: NavController) { this.gat = "providers";} //default view for segment
 
 }

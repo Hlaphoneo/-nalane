@@ -7,6 +7,10 @@
         <ion-input type="text" style="color:white" [(ngModel)]="signupData.fullname"></ion-input>
       </ion-item>
       <ion-item class="form-input">
+        <ion-label color="white" ><small>PHONE</small></ion-label>
+        <ion-input type="text" style="color:white" [(ngModel)]="signupData.phone"></ion-input>
+      </ion-item>
+      <ion-item class="form-input">
         <ion-label color="white" ><small>EMAIL</small></ion-label>
         <ion-input type="text" style="color:white" [(ngModel)]="signupData.email"></ion-input>
       </ion-item>
@@ -14,13 +18,10 @@
         <ion-label color="white" ><small>PASSWORD</small></ion-label>
         <ion-input type="password" style="color:white" [(ngModel)]="signupData.password"></ion-input>
       </ion-item>
-      <ion-item class="form-input">
-        <ion-label color="white" ><small>PHONE</small></ion-label>
-        <ion-input type="text" style="color:white" [(ngModel)]="signupData.phone"></ion-input>
-      </ion-item>
+
   </div>
   <br>
-  <button class="button-signin" ion-button full (click)="signup()" style="color:white">Sign up</button>
+  <button class="button-signin btn-lg" ion-button full (click)="signup()" style="color:white">Sign up</button>
   <h6 align="center" class="password-forgot"><small>Terms and conditions.</small></h6>
   <h6 align="center" class="password-forgot" style="margin-top:15px" (click)="gotoForgotPassword()"><small>FORGOT YOUR PASSWORD ?</small></h6>
   <div id="bubbles">
@@ -30,4 +31,5 @@
         <div class="bubble x4"></div>
         <div class="bubble x5"></div>
 </div>
+
 </ion-content>

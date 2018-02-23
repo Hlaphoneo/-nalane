@@ -1,8 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import {AngularFireModule} from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
+
+
+import { AccountProvider } from '../providers/account/account';
+
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +22,25 @@ import { OrderReadyPage } from '../pages/order-ready/order-ready';
 import { LoginPage } from '../pages/login/login';
 import { PasswordResetPage } from '../pages/password-reset/password-reset';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
+import { AddonsProvider } from '../providers/addons/addons';
+import { AppProvider } from '../providers/app/app';
+import { DataProvider } from '../providers/data/data';
+import { OrdersProvider } from '../providers/orders/orders';
+import { UserProvider } from '../providers/user/user';
+import { GpsProvider } from '../providers/gps/gps';
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCTiIF9PkDjMZutGOd4sSgDM-nFizwB_h8",
+  authDomain: "washee-6f663.firebaseapp.com",
+  databaseURL: "https://washee-6f663.firebaseio.com",
+  projectId: "washee-6f663",
+  storageBucket: "washee-6f663.appspot.com",
+  messagingSenderId: "862344579026"
+};
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +55,12 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +76,15 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AccountProvider,
+    AuthenticationProvider,
+    AddonsProvider,
+    AppProvider,
+    DataProvider,
+    OrdersProvider,
+    UserProvider,
+    GpsProvider
   ]
 })
 export class AppModule {}
