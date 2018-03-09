@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { Platform, NavController , Events} from 'ionic-angular';
+import { Platform , Events} from 'ionic-angular';
 
 //native
 import { StatusBar } from '@ionic-native/status-bar';
@@ -9,11 +9,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {AppProvider} from "../providers/app/app";
 
 //components
+import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+
+import { ProvidersPage } from '../pages/providers/providers';
 import { OrderPage } from '../pages/order/order';
 import { NewOrderPage } from '../pages/new-order/new-order';
 import { OrderReadyPage } from '../pages/order-ready/order-ready';
-import { LoginPage } from '../pages/login/login';
 import { PasswordResetPage } from '../pages/password-reset/password-reset';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 
@@ -34,14 +36,14 @@ export class MyApp {
     });
   }
   appStart(){
-    //If user is not loggded in listen to the login invent. This is also used to log out the user
-    this.events.subscribe("loginstate",(loginState)=>{
-        if(loginState == true)
-          this.rootPage = HomePage;
-        else
+    /*  If user is not loggded in listen to the login invent. This is also used to log out the user */
+    this.events.subscribe("authenticated",(authentication)=>{
+        if(authentication == true)
+          this.rootPage = ProvidersPage;
+        else{
           this.rootPage = LoginPage;
+        }
     })
-    //Application entry
-    this.app.appStart()
+    this.app.appStart() //Application entry , checks if the user is logged in
   }
 }

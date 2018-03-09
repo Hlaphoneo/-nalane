@@ -35,12 +35,15 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #7C7C7C,
+  primary2:   #00B2AA,
   secondary:  #f53d3d,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
   base1:      #1D1F21,
-  white:      #FCFCFC
+  white:      #FCFCFC,
+  green:      #00B2AA,
+  unique1:    rgba(255,255,255,0)
 );
 
 
@@ -56,7 +59,7 @@ $colors: (
 // Material Design only Sass variables can go here
 
   $item-md-thumbnail-size : 55px ;
-
+  $menu-width	: 230px;
 
 // App Windows Variables
 // --------------------------------------------------

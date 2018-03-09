@@ -1,44 +1,139 @@
 page-home {
   .top-container{
     width: 100%;
-    height: 45%;
+    height: 60%;
     background-image:url("../assets/imgs/map.png");
     background-size: cover;
+    // border-style: solid;
+    // border-width: 0px 0px 1px 0px;
+    // box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3), 0 1px 15px 0 rgba(0, 0, 0, 0.20);
+  }
+
+  .icon-left{
+    float: right;
+    color: #00B2AA;
+    font-size: 25px !important;
+  }
+  .cool{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    height: 60px !important;
+  }
+  .cools{
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+    height: 60px !important;
+
 
   }
   .bottom-container{
-    height: 55%;
+    // display: none;
     overflow: scroll;
-    background-color: #F2F2F2;
+
+    // background-color: #F2F2F2;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3), 0 1px 15px 0 rgba(0, 0, 0, 0.20);
+    height: 40%;
+    position: fixed;
+    width: 100%;
   }
 
-}
+  .searchbar-search-icon { display:none; width:0; height:0; }
+  .searchbar-input {
+      padding-left: 9px !important;
+      box-shadow: none !important;
+    }
+    ion-segment-button {
+      min-height: 70px;
+      line-height: 1.5rem !important;
 
-.list-container{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5px;
-}
+      padding-left: 0px;
+      padding-right: 0px;
 
-.item{
-  // background-color: black;
-  border-radius: 5px;
-}
+    }
+  .toolbar{
+    border-radius: 5px !important;
+    margin-top: 5px;
+    position: absolute;
+    width: 98%;
+    margin-left: 1%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
 
-.name{
-  margin-top: -10px ;
-}
+  .provider1{
+    background-image: url("../assets/imgs/carwash.jpg");
+    height: 60px;
+    width:  60px;
+    display: inline-block;
+    border-radius: 50px;
+    background-size: cover;
+    margin-top:15px;
+    margin-left: 5px;
+    margin-right:20px
 
-.item{
-  margin-top: 5px;
-}
-.star1{
-  color: #F53D3D;
-}
-.star2,.star3{
-  color: #A3A8AE;
-}
-.fab-middle{
-  margin-top: -60px !important;
+  }
+
+  .providers{
+      // width: 30em;
+      overflow-x: scroll;;
+      white-space: nowrap;
+      height: 30%;
+      width: 100;
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+      // padding: 5px
+      padding: 0px 0px 0px 0px;
+
+  }
+
+  .list-container{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+  }
+
+  .segment{
+    width:70% !important;
+    margin-left: 17%;
+  }
+
+
+  .segment-button{
+    margin-left: -10px !important;
+
+  }
+
+  .item{
+    // background-color: black;
+    border-radius: 5px;
+    padding: -10px !important;
+    height: 35%;
+    width: 98%;
+    margin-left: 1%;
+
+  }
+
+  .name{
+    margin-top: -10px ;
+  }
+  .segment-data{
+    overflow: scroll !important;
+    height: 37vh;
+
+  }
+
+  .item{
+    margin-top: 5px;
+  }
+  .star{
+    font-size: 15px;
+  }
+  .star3{
+    font-size: 15px !important;
+    color: #A3A8AE;
+
+  }
+  .fab-middle{
+    margin-top: -60px !important;
+  }
+
 }

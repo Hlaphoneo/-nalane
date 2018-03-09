@@ -8,6 +8,8 @@ import {AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 
 import { AccountProvider } from '../providers/account/account';
@@ -22,6 +24,9 @@ import { OrderReadyPage } from '../pages/order-ready/order-ready';
 import { LoginPage } from '../pages/login/login';
 import { PasswordResetPage } from '../pages/password-reset/password-reset';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { ProvidersPage } from '../pages/providers/providers';
+
+
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 import { AddonsProvider } from '../providers/addons/addons';
 import { AppProvider } from '../providers/app/app';
@@ -29,6 +34,7 @@ import { DataProvider } from '../providers/data/data';
 import { OrdersProvider } from '../providers/orders/orders';
 import { UserProvider } from '../providers/user/user';
 import { GpsProvider } from '../providers/gps/gps';
+import { RestProvider } from '../providers/rest/rest';
 
 
 export const firebaseConfig = {
@@ -51,7 +57,8 @@ export const firebaseConfig = {
     NewOrderPage,
     LoginPage,
     PasswordResetPage,
-    SignUpPage
+    SignUpPage,
+    ProvidersPage
   ],
   imports: [
     BrowserModule,
@@ -60,6 +67,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    IonicStorageModule.forRoot()
+
 
   ],
   bootstrap: [IonicApp],
@@ -71,7 +80,8 @@ export const firebaseConfig = {
     NewOrderPage,
     LoginPage,
     PasswordResetPage,
-    SignUpPage
+    SignUpPage,
+    ProvidersPage
   ],
   providers: [
     StatusBar,
@@ -84,7 +94,8 @@ export const firebaseConfig = {
     DataProvider,
     OrdersProvider,
     UserProvider,
-    GpsProvider
+    GpsProvider,
+    RestProvider
   ]
 })
 export class AppModule {}

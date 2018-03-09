@@ -1,4 +1,34 @@
 page-order-ready {
+  input{
+    pointer-events:none;
+    color: #878C91;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E4EBEF;
+    height: 35px;
+    border-style: solid;
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-left: 45px;
+//
+    /*box-shadow: none;*/
+    /*shad*/
+  }
+  // .input{
+  //   font-size: 14px !important;
+  //   color: #7c7c80;
+  //   font-family: 'Montserrat', sans-serif !important;
+  //   padding: 10px !important;
+  //   border-radius: 5px;
+  //   box-shadow: none;
+  //   // padding-bottom: 18px !important;
+  // }
+
+
   .bottom-container{
     width: 100%;
     height: 62%;
@@ -8,7 +38,7 @@ page-order-ready {
   }
 
   .logo{
-    background-image:url(../assets/imgs/washer.jpg);
+    background-image:url(../assets/imgs/carwash.jpg);
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;

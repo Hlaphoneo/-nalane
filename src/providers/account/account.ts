@@ -14,9 +14,9 @@ export class AccountProvider {
     this.authenticator.authenticate(signData)
   }
   signout(){
-    this.authenticator.signout();
+    this.authenticator.revokeAuthentication();
   }
   checkLogin(){
-    this.authenticator.checkAuth();
+    return this.authenticator.checkAuth();
   }
 }

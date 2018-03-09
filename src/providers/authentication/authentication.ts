@@ -1,31 +1,28 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Http , Headers } from '@angular/http';
 import { Events } from "ionic-angular";
+import { Storage } from '@ionic/storage';
 
-import * as firebase from 'firebase/app';
+import {RestProvider} from "../rest/rest";
+
+// import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthenticationProvider {
   cpRef = 'https://us-central1-washee-6f663.cloudfunctions.net/uscp';
 
-  constructor(public events : Events ,public http: Http, public firebaseAuth : AngularFireAuth) {
-    this.checkAuth()
+  constructor(public storage : Storage, public rest : RestProvider, public events : Events , public firebaseAuth : AngularFireAuth) {
   }
 
   checkAuth(){
-    this.firebaseAuth.auth.onAuthStateChanged((user) => {
-      if(user){
-        this.events.publish("loginstate",true)
-      }else{
-        this.events.publish("loginstate",false)
-      }
-    });
+    return this.storage.get("authenticated").then((val)=>{
+      return val;
+    })
   }
-  logout(){
-    firebaseAuth.auth.signOut().then(()=>{
-        this.events.publish("loginstate",false);
+  revokeAuthentication(){
+    this.firebaseAuth.auth.signOut().then(()=>{
+        this.storage.remove("authenticated");
+        this.events.publish("authenticated",false);
     }).catch((error) => {
         this.events.publish("loginstate","unknown-error");
     });
@@ -33,7 +30,8 @@ export class AuthenticationProvider {
   authenticate(signData : any){
         this.firebaseAuth.auth.signInWithEmailAndPassword(signData.email,signData.password)
         .then((response:any) => {
-            this.events.publish("signinevent","success") // this is just temparary
+            this.storage.set("authenticated",true)
+            this.events.publish("authenticated",true) // this is just temparary
         }).catch((error :any) => {
             let message = "";
             if(error.code == "auth/invalid-email")
@@ -54,7 +52,7 @@ export class AuthenticationProvider {
             this.events.publish("signinevent",error.message);
       });
   }
-  registerNewUser(signupData : any){
+  registerNewUser(signupData : any){ //registering new user by email and password
     this.firebaseAuth.auth.createUserWithEmailAndPassword(signupData.email, signupData.password).then((user)=>{
       signupData.uid = user.uid;
       this.createUserReference(signupData);
@@ -63,13 +61,6 @@ export class AuthenticationProvider {
       });
   }
   createUserReference(userData : any){
-    this.http.post(this.cpRef, JSON.stringify(userData))
-          .subscribe(res => {
-            if(res.status == 200){
-              this.events.publish("signupevent","success")
-            }
-          }, (err) => {
-            this.events.publish("signupevent","Signup failed! :(, Please check data")
-      });
+    this.rest.signupPost(this.cpRef, userData); //uses rest api to login, the sign up authentication is only completed after the user profile is creates
   }
 }

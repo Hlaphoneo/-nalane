@@ -1,6 +1,5 @@
 import { Injectable} from '@angular/core';
-import {Events,App } from "ionic-angular";
-import {HomePage} from "../../pages/home/home";
+import {Events} from "ionic-angular";
 import {AccountProvider} from "../account/account";
 import {OrdersProvider} from "../orders/orders";
 import {UserProvider} from "../user/user";
@@ -18,27 +17,29 @@ export class AppProvider {
 
     appStart(){
       this.appInit()
-      this.events.subscribe("loginstate",(loginState)=>{
-        if(loginState == true){
-          this.user.init();
-          console.log("userin")
-          this.events.unsubscribe("loginstate");
-        }
-      })
     }
-
   /*
     events driven startup interface
       1. load all reports
-      3. Start Gps system
+      3. Check if the user is logged. in
   */
     appInit(){
-        this.orders.init();
+        this.orders.init(); // loading all orders
+        this.checkAuth().then((authentication)=>{ //checking if the user is authenticated
+          if(!authentication)
+            this.events.publish("authenticated",false); //if the user is logged in
+          else
+            this.events.publish("authenticated",true);
+        });
     }
+
+  /*
+    This method destroyes all user data and brings the application to the state before login
+  */
+    appKill(){}
 
   /*============================================================================
     Interface :  Account Interface
   */
-    checkLogin(){ return this.account.checkLogin()}
-
+    checkAuth(){return this.account.checkLogin()}
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+
+import { AlertController } from 'ionic-angular';
+
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -15,11 +18,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrderReadyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl: AlertController,  public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderReadyPage');
   }
+  cancelOrder() {
+  let confirm = this.alertCtrl.create({
+    title: 'Are you sure?',
+    message: 'If you cancel too many orders, your device might be suspended from the service. ',
+    buttons: [
+      {
+        text: 'No',
+        handler: () => {
+          console.log("I made a mistake");
+        }
+      },
+      {
+        text: 'Yes',
+        handler: () => {
+          console.log('Cancel');
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
 
 }

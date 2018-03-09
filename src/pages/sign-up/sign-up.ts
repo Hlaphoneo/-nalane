@@ -20,7 +20,6 @@ export class SignUpPage {
       phone     :'',
       uid       :''
   }
-
   constructor(public account : AccountProvider, public addon: AddonsProvider, public alertCtrl: AlertController, public events : Events, public navCtrl: NavController, public navParams: NavParams , public navigator : NavController) {
   }
 
