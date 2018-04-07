@@ -1,37 +1,50 @@
 import { Injectable } from '@angular/core';
-import {OrdersProvider} from "../orders/orders";
-import {GpsProvider} from "../gps/gps";
-
-import {Events} from "ionic-angular";
+import { Storage } from '@ionic/storage';
 
 
+/*
+  Generated class for the UserProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
 @Injectable()
 export class UserProvider {
-
-  constructor(public events : Events, public gps : GpsProvider, public orders : OrdersProvider) {
-    this.events.subscribe("authenticated",(authentication)=>{
-      if(authentication == true)
-          this.init();
-    })
-   }
-
-  /*
-    Application init method;
-      1.  Load all active user active orders
-      2.  Load user favourite orders
-  */
-
-  init(){
-    this.loadUserProfile();
-    this.startLocationStream();
-    this.orders.loadUserOrders("dummy");
+  read = Array();
+  new = Array();
+  constructor(public storage : Storage){
+    this.init();
   }
 
-  /*
-    Called after login event;
-      1. Collects user profile from the database
-  */
+  init(){
+    this.retrive();
+  }
+  /*  Save the currenct object in the storage*/
 
-  loadUserProfile(){}
-  startLocationStream(){this.gps.startGPSsystem();}
+  retrive(){
+    this.storage.get("read").then((value)=>{
+      if(value != null){
+        this.read = value;
+      }
+    })
+    this.storage.get("new").then((value)=>{
+        this.new = value;
+    })
+    console.log(this.read)
+  }
+  addToRead(key : string){
+    if(this.read.indexOf(key) < 0 ){
+      this.read.push(key)
+    }
+    this.storage.set("read",this.read);
+
+    console.log(this.read)
+  }
+  addToNew(key : string){
+    if(this.new != null)
+      this.new.push(key)
+    else
+      this.new = Array();
+      this.new.push(key);
+  }
 }

@@ -1,144 +1,5 @@
-.toast{
-  background-color:rgba(3,3,3,0.6);
-  color:blue;
-    white-space: pre-line;
 
-}
-page-home {
-  .header{
-    height: 64px;
-    position: fixed;
-    z-index: 1;
-    background: #64D8D7;
-    // background: #00B2AA;
-    width: 100% !important;
-    margin-top: -5px !important;
-  }
-  .list{
-     overflow: hidden;
-  }
-  .actual{
-    height: 100% !important;
-    overflow: scroll;
-    overflow-x: hidden;
-  }
-  .scroll-content{overflow-y: hidden;}
-  .new{
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top:-10px;
-    color: white;
-  }
-  .counter{
-    color: white;
-    margin-right: auto;
-    margin-right: auto;
-    display: block;
-    font-size: 40px !important;
-    margin-top: -5px;
-  }
-  .center {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  .notifications{
-    margin-top: 10%;
-    background-color:#FF717F;
-    box-shadow: none;
-    width: 60%;
-    max-width: 250px;
-
-  }
-  .on{
-      opacity: 1;
-      font-weight: 700;
-  }
-  .off{
-      opacity: 0.7;
-  }
-  .home-icon {
-    margin-top: 50% !important;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 80px;
-    display: block;
-    font-size: 500%;
-    color: white;
-  }
-  .left-span{
-    height: 60px;
-    margin-top: 3px;
-    position: absolute;
-    margin-left: -15px;
-    z-index: 5;
-    width: 5px;
-
-  }
-.hide{
-  opacity: 0;
-}
-.show{
-  opacity: 1;
-}
-  .yes{
-      background-color: #A0D6A4;
-
-  }
-  .no{
-      background-color: #FF717F;;
-  }
-  .icon-container{
-    height: 150px;
-    width: 150px;
-    background: #B1ECE8;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border-radius: 100px !important;
-
-  }
-  .cools{
-    box-shadow: 0px 1px 1px 1px  rgba(0.05, 0.05, 0.05,0.05);
-    height: 70px !important;
-    border-color: black;
-    border-style: solid;
-    border-width: 5px;
-
-    // background-color: black;
-    border-radius: 5px;
-    padding: -10px !important;
-    height: 35%;
-    width: 98%;
-    margin-left: 1%;
-  }
-  .home-icons{
-    margin-top:10px;
-    font-size: 20px;
-    opacity: 0.5;
-    margin-top: 2px !important;
-    margin-left: 90%;
-    color:#41AD49;
-
-
-  }
-
-  .icon-ann{
-    margin-left: 12px !important;
-    margin-top: 10px;
-
-  }
-  .clickable{
-    position: absolute;
-    display: inline-block;
-    height: 60px !important;
-    margin-left: -10px;
-    margin-top: -20px;
-    z-index: 100 !important;
-
-  }
-
+page-start{
   body {
     height: 100vh;
     font-family: "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace;
@@ -148,7 +9,7 @@ page-home {
   body::before {
     content: "";
     position: absolute;
-
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
@@ -159,10 +20,9 @@ page-home {
 
   .loader,
   .loader__figure {
-
-    position: relative;;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    margin-bottom: 20px;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -170,15 +30,6 @@ page-home {
     transform: translate(-50%, -50%);
   }
 
-  .done{
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    color : #FF717F;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    opacity: .6
-  }
   .loader {
     overflow: visible;
     padding-top: 2em;

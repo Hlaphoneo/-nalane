@@ -1,63 +1,22 @@
-<ion-header>
-   <ion-toolbar color="green" >
+<ion-header >
+   <ion-toolbar color="white">
      <ion-title>
-  <ion-icon name="close" (click)="this.navCtrl.pop()"></ion-icon>
- <span style="margin-left:20px;margin-top:-10px !important">ORDER #1251<span style="font-family: 'Orbitron', sans-serif;"></span> </span></ion-title>
+  <div (click)="this.navCtrl.pop()" class="clickable">
+    <ion-icon class="icon-ann"name="close" ></ion-icon>
+  </div>
+ <span style="margin-left:40px;margin-top:-12px !important;color:#1EB771"><small>{{announcement.owner}}</small><span style="font-family: 'Orbitron', sans-serif;"></span> </span></ion-title>
      <!-- <ion-title style="float:right"><span >ETA : <span style="font-family: 'Orbitron', sans-serif;">24</span> mins</span></ion-title> -->
    </ion-toolbar>
  </ion-header>
 <ion-content >
 
-
   <div class="top-container" padding>
-    <h2><small>Kgotsong Carwash</small></h2>
+    <h5 ><small>on {{announcement.timestamp}}</small></h5>
+    <h1 style="margin-top:-10px;"><small> {{announcement.title}}</small></h1>
     <hr>
-    <h6><small>Order information</small></h6>
-    <ion-icon color="green" name="globe" style="position:absolute;margin-top:10px;margin-left:30px"></ion-icon>
-    <input class="input" type="text" name="name" id="name" value="1343 Maile Street Kgotsong."/>
-    <ion-icon color="green" name="checkmark-circle" style="position:absolute;margin-top:20px;margin-left:30px"></ion-icon>
-    <input class="input" type="text" name="name" id="name" value="On the way"/>
-    <ion-icon color="green" name="person" style="position:absolute;margin-top:20px;margin-left:30px"></ion-icon>
-    <input class="input" type="text" name="name" id="name" value="Gwen Lehloo"/>
-    <ion-icon color="green" name="cash" style="position:absolute;margin-top:20px;margin-left:30px"></ion-icon>
-    <input class="input" type="text" name="name" id="name" value="R150"/>
-    <!-- <input class="input" type="text" name="name" id="name" value="1343 Maile Street Kgotsong."/> -->
-
-      <ion-grid>
-      <ion-row>
-        <ion-col col-12>
-        <!-- <ion-grid>
-          <ion-row>
-            <ion-col col-4>
-              <div class="logo"></div>
-            </ion-col>
-            <ion-col col-8>
-              <h5 style="margin-top:0px;opacity:0.6"><strong><small>Nick Cannon</small></strong></h5>
-              <h5 style="margin-top:-10px;opacity:0.6"><strong><small>Due : <strong>R2580</strong> , Cars: 1</small></strong></h5>
-              <h5 style="margin-top:-10px;opacity:0.6"><strong><small></small></strong></h5>
-              <h4 style="margin-top:-5px;opacity:0.6">Fusion car wash</h4>
-            </ion-col>
-          </ion-row>
-        </ion-grid> -->
-        </ion-col>
-        <ion-col col-12>
-          <ion-grid>
-            <ion-row>
-              <ion-col col-6>
-                <button style="opacity:0.8;background:#F9FAFB" class="center" ion-button icon-left>
-                  <ion-icon name="call" style="color:#F53D3D"></ion-icon> <span style="color:#F53D3D">Call Now</span>
-                </button>
-              </ion-col>
-              <ion-col col-6>
-                <button (click)="cancelOrder()" class="center" style="box-shadow:none;border-radius:5px;"ion-button icon-left>
-                  Cancel Order
-                 </button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
+    <h5 style="opacity:0.6"><small>message</small></h5>
+    <p class="message">
+      {{announcement.message}}
+    </p>
   </div>
 </ion-content>

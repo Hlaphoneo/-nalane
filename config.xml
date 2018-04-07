@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.washee.www" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.nalane2018.www" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Washee</name>
     <description>Peer tp peer car washing service.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Konza Technology Systems Pty (Ltd)</author>
@@ -82,6 +82,8 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="android" spec="7.0.0" />
     <allow-navigation href="http://192.168.8.101:8100" />
+    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-fullscreen" spec="^1.2.0" />
+    <plugin name="cordova-plugin-firebase" spec="0.1.25" />
 </widget>

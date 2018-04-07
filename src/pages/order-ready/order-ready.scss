@@ -1,4 +1,20 @@
 page-order-ready {
+  .clickable{
+    position: absolute;
+    display: inline-block;
+    height: 60px !important;
+    margin-left: -10px;
+    margin-top: -20px;
+    z-index: 100 !important;
+  }
+  .icon-ann{
+    margin-left: 12px !important;
+    margin-top: 22px;
+
+  }
+  .message{
+    line-height: 1.5;
+  }
   input{
     pointer-events:none;
     color: #878C91;

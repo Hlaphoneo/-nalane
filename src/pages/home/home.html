@@ -1,138 +1,89 @@
-<ion-menu [content]="mycontent">
-  <ion-content>
-    <ion-list>
-    </ion-list>
-  </ion-content>
-</ion-menu>
+
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
-<ion-content style="background-color: white;">
-<!-- <ion-content style="background-color: #F2F2F2;"> -->
-  <div class="top-container">
-  <ion-toolbar  align="center" color="white" class="toolbar">
-        <ion-buttons left>
-              <button ion-button icon-only  menuToggle >
-                <ion-icon name="menu"></ion-icon>
-              </button>
-            </ion-buttons>
-            <ion-searchbar (input)="search()"></ion-searchbar>
-            <ion-buttons end>
-              <button ion-button icon-only >
-                <ion-icon name="locate"></ion-icon>
-              </button>
-            </ion-buttons>
-      </ion-toolbar>
-  </div>
-  <ion-fab class="fab-middle" bottom right  ><button (click)="selectProvider()" ion-fab mini color="green"><ion-icon name="basket" style="z-index-10"></ion-icon></button></ion-fab>
+<ion-content class="home" style="background-color: white">
+    <ion-item class="header" no-lines>
+        <span  style="diplay:inline-block;position:absolute;z-index:50" ><ion-icon   (click)="showInfo()" name="alert" style="color:white;font-size:25px;diplay:inline;"></ion-icon></span>
+        <ion-title align="center" ><span style="color:white "><small>home</small></span></ion-title>
+        <!-- <span style="diplay:inline-block !important"><h5 align="center" class="center" style="color:white" >Home</h5></span> -->
 
-  <div class="bottom-container">
-    <style>
-    .ttk{
-      box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.10);
+    </ion-item>
+    <div class="icon-container">
+      <ion-icon align="center" name="notifications-outline" class="home-icon"></ion-icon>
+      <h1 align="center" class="counter">{{this.dataProvider.newAnnouncements > 10 && "10+" || this.dataProvider.newAnnouncements}}</h1>
+      <h6 align="center" class="new">new</h6>
+    </div>
+    <h6 align="center" class="center" style="padding:10px 30px 10px 30px;color:#B4B4B4"><small>tap the button below to view all the new announcements</small></h6>
+    <button align="center" (click)= "showList()"ion-button class="center notifications" >View announcements</button>
+    <br>
+    <!-- <hr style="width:85%">
+    <ion-icon name="globe"></ion-icon> -->
+</ion-content>
 
-    }
 
-    </style>
-    <div class="ttk"style="background-color:white;width:100%;position:fixed;z-index:2">
-      <h6 align="center" style="opacity:0.4;z-index:2;margin-left:10px;">orders</h6>
+<ion-content style="background-color: white;display:none" class="list">
+  <ion-item class="header" no-lines>
+    <div (click)="hideList()" class="clickable">
+      <ion-icon class="icon-ann" name="ios-close-outline" style="margin-left:10px;font-size:45px;color:white;z-index:10"></ion-icon><br>
 
     </div>
-    <style>
-    .home-icons{
-      font-size: 20px;
-      opacity: 0.4;
-    }
+    <h2 align="center" class="center" style="color:white;">Announcements</h2>
 
-    </style>
-<br>
-<br>
-<div style="margin-top: 20px !important;padding: 0 0 10px 0px">
-  <ion-item class="cools" no-lines (click)="showOrderModal()">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <span style="opacity:1">Kgotsong carwash</span><br>
-          <span style="opacity:6"><small>11 mins away </small></span>
-          <!-- <ion-icon class="home-icons" name="basket" end><small><span style="margin-left:15px;"></span></small></ion-icon> -->
-        </ion-col>
-        <ion-col>
-          <ion-icon class="home-icons icon-left" name="checkmark-circle"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </ion-item>
-</div>
+  <div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [scrollWindow]="false"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()"
+   class="actual" style="padding: 60px 0 0px 0px;!important;" >
+    <div style="padding: 0px 0 6px 0px" *ngFor = "let Ann of ann | async">
+      <ion-item class="cools" no-lines (click)="view(Ann)">
+        <ion-grid>
+          <ion-row>
+            <span class="{{Ann.title}} - {{ this.user.read.indexOf(Ann.key) < 0 && 'left-span yes on' || 'left-span no off' }}"></span>
+            <ion-col>
+              <span class="{{ this.user.read.indexOf(Ann.key) < 0 && 'on' || 'off' }}">{{Ann?.title}}</span><br>
+              <span class="{{ this.user.read.indexOf(Ann.key) < 0 && 'on' || 'off' }}"><small>{{Ann?.timestamp}} </small></span>
+              <br>
+              <span class="{{ this.user.read.indexOf(Ann.key) < 0 && 'on' || 'off' }}" ><small>{{Ann?.owner}} </small></span>
+            </ion-col>
+            <ion-col>
+              <span class="{{ Ann.municipality == 1 && 'show' || 'hide' }}" ><ion-icon class="home-icons icon-left"  name="checkmark-circle"></ion-icon></span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+    <div *ngIf="!finished">
+      <div class="loader">
+        <div class="loader__figure"></div>
+      </div>
+    </div>
 
-<!-- <ion-item class="cool">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-icon class="home-icons" name="globe"><small><span style="margin-left:15px;">| Kroonstad</span></small></ion-icon>
-      </ion-col>
-      <ion-col>
-        <ion-icon class="home-icons" name="basket"><small><span style="margin-left:15px;">| 13 Providers</span></small></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-item> -->
-    <!-- <div >
-       <ion-segment align="center" [(ngModel)]="gat" class="segment">
-         <ion-segment-button class="segment-button" value="providers">
-           <span item-end><ion-icon class="star1" name="car"></ion-icon></span>
-           <br><small>Providers</small>
-         </ion-segment-button>
-         <ion-segment-button class="segment-button" value="favourites">
-           <span item-end><ion-icon class="star1" name="star"></ion-icon></span>
-           <br><small>Favourites</small>
-         </ion-segment-button>
-         <ion-segment-button class="segment-button" value="orders">
-         <span item-end><ion-icon class="star1" name="timer"></ion-icon></span>
-         <br><small>Orders</small>
-         </ion-segment-button>
-       </ion-segment>
-       </div>
-
-       <div [ngSwitch]="gat" style="margin-top:0px" >
-         <ion-list *ngSwitchCase="'providers'" class="segment-data">
-           <ion-item class="item" no-lines>
-             <ion-thumbnail item-start>
-               <img src="http://lorempixel.com/100/100">
-             </ion-thumbnail>
-             <h5 class="name" ><span style="background-color:#7C7C7C;color:white;padding: 0px 5px 0px 5px;border-radius:4px">SOWETO CAR WASH</span></h5>
-             <span>
-               <span  item-end> <ion-icon class="star" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
-             </span>
-             <h2 class="status"><small>Available</small></h2>
-           </ion-item>
-         </ion-list>
-         <ion-list *ngSwitchCase="'favourites'">
-           <ion-item>
-             <ion-thumbnail item-start>
-               <img src="img/thumbnail-puppy-1.jpg">
-             </ion-thumbnail>
-             <h2>Ruby</h2>
-           </ion-item>
-           ...
-         </ion-list>
-
-         <ion-list *ngSwitchCase="'orders'">
-           <ion-item class="item" no-lines>
-             <ion-thumbnail item-start>
-               <img src="http://lorempixel.com/100/100">
-             </ion-thumbnail>
-             <h2 class="name"  >Forescent</h2>
-             <h2 class="status"><small>Available</small></h2>
-             <span item-end>
-               <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star1" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
-               <span  item-end> <ion-icon class="star3" name="star"></ion-icon></span>
-             </span>
-           </ion-item>
-         </ion-list>
-       </div> -->
-
+    <div     *ngIf="finished">
+      <span class="done" align="center">Finished</span>
+    </div>
   </div>
+
+
+
+
+
+  <!-- <div style="padding: 5px 0 0px 0px" *ngFor = "let Ann of this.dataProvider.announcements | async">
+    <ion-item class="cools" no-lines (click)="showOrderModal()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <span style="opacity:1">{{Ann.title}}</span><br>
+            <span style="opacity:6"><small>{{Ann.date}} </small></span>
+            <br>
+            <span style="opacity:6"><small>{{Ann.owner}} </small></span>
+          </ion-col>
+          <ion-col>
+            <ion-icon class="home-icons icon-left" style="margin-top:10px;" name="checkmark-circle"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div> -->
 </ion-content>

@@ -1,45 +1,54 @@
-import { Injectable} from '@angular/core';
-import {Events} from "ionic-angular";
-import {AccountProvider} from "../account/account";
-import {OrdersProvider} from "../orders/orders";
-import {UserProvider} from "../user/user";
-import {GpsProvider} from "../gps/gps";
-
-
+import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { DataProvider } from '../central/central';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { FirebaseListObservable,FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import * as firebase from 'firebase';
+import { Events} from 'ionic-angular';
 /*
-  Global interface for all servicess
+  Generated class for the AppProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
 */
-
-
 @Injectable()
 export class AppProvider {
-  constructor(public events : Events, public gps : GpsProvider, public user : UserProvider, public orders : OrdersProvider, public account : AccountProvider ){}
+  database2 : any;
+  constructor(public events : Events, public database : AngularFireDatabase, public storage :  Storage, public dataProvider : DataProvider){
+    this.database2 = firebase.database();
 
-    appStart(){
-      this.appInit()
-    }
-  /*
-    events driven startup interface
-      1. load all reports
-      3. Check if the user is logged. in
-  */
-    appInit(){
-        this.orders.init(); // loading all orders
-        this.checkAuth().then((authentication)=>{ //checking if the user is authenticated
-          if(!authentication)
-            this.events.publish("authenticated",false); //if the user is logged in
-          else
-            this.events.publish("authenticated",true);
-        });
-    }
+  }
 
-  /*
-    This method destroyes all user data and brings the application to the state before login
-  */
-    appKill(){}
+  start(){
+    this.dataProvider.calculateNew();
+  }
+  getMore(batch,lastKey : any){
+    return this.dataProvider.loadAnnouncements(batch, lastKey);
+  }
 
-  /*============================================================================
-    Interface :  Account Interface
-  */
-    checkAuth(){return this.account.checkLogin()}
+  checkRegistration(){
+    return this.storage.get('registration').then((mode) =>{
+        return mode;
+    })
+  }
+  checkNew(){
+    this.dataProvider.checkNew();
+  }
+  register(phone : string){
+    this.database2.ref("/reg-information").push({phone}).then(()=>{
+        this.events.publish("registration::true")
+        this.storage.set("registration",true)
+    })
+  }
+  clearNew(){
+    this.dataProvider.clearNew();
+  }
+  updateViewMore(){
+    this.dataProvider.updateViewMore();
+  }
+
+  createNew(){
+
+  }
+
 }

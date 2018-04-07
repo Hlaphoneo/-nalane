@@ -1,49 +1,48 @@
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseObjectObservable,FirebaseListObservable} from 'angularfire2/database-deprecated';
+
 import { AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { AndroidFullScreen } from '@ionic-native/android-full-screen';
+import { Firebase } from '@ionic-native/firebase';
 
 
 
-import { AccountProvider } from '../providers/account/account';
 
-
-
-import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { OrderPage } from '../pages/order/order';
-import { NewOrderPage } from '../pages/new-order/new-order';
+import { StartPage } from '../pages/start/start';
 import { OrderReadyPage } from '../pages/order-ready/order-ready';
 import { LoginPage } from '../pages/login/login';
 import { PasswordResetPage } from '../pages/password-reset/password-reset';
-import { SignUpPage } from '../pages/sign-up/sign-up';
-import { ProvidersPage } from '../pages/providers/providers';
+import { RegistrationPage } from '../pages/registration/registration';
+import { MyApp } from './app.component';
 
 
-import { AuthenticationProvider } from '../providers/authentication/authentication';
-import { AddonsProvider } from '../providers/addons/addons';
+import { DataProvider } from '../providers/central/central';
 import { AppProvider } from '../providers/app/app';
-import { DataProvider } from '../providers/data/data';
-import { OrdersProvider } from '../providers/orders/orders';
 import { UserProvider } from '../providers/user/user';
-import { GpsProvider } from '../providers/gps/gps';
-import { RestProvider } from '../providers/rest/rest';
+import { FirebasepushProvider } from '../providers/firebasepush/firebasepush';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
+
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCTiIF9PkDjMZutGOd4sSgDM-nFizwB_h8",
-  authDomain: "washee-6f663.firebaseapp.com",
-  databaseURL: "https://washee-6f663.firebaseio.com",
-  projectId: "washee-6f663",
-  storageBucket: "washee-6f663.appspot.com",
-  messagingSenderId: "862344579026"
+  apiKey: "AIzaSyCbnN54Pu9fgj8eHvQ6DaHGvcRnyQMSFy4",
+  authDomain: "nalane-032018.firebaseapp.com",
+  databaseURL: "https://nalane-032018.firebaseio.com",
+  projectId: "nalane-032018",
+  storageBucket: "",
+  messagingSenderId: "571721946584"
 };
 
 
@@ -52,20 +51,20 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    OrderPage,
+    StartPage,
     OrderReadyPage,
-    NewOrderPage,
     LoginPage,
     PasswordResetPage,
-    SignUpPage,
-    ProvidersPage
+    RegistrationPage
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicStorageModule.forRoot()
 
@@ -75,27 +74,23 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    OrderPage,
+    StartPage,
     OrderReadyPage,
-    NewOrderPage,
     LoginPage,
     PasswordResetPage,
-    SignUpPage,
-    ProvidersPage
+    RegistrationPage
   ],
   providers: [
     StatusBar,
+    AndroidFullScreen,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccountProvider,
-    AuthenticationProvider,
-    AddonsProvider,
-    AppProvider,
     DataProvider,
-    OrdersProvider,
+    AppProvider,
     UserProvider,
-    GpsProvider,
-    RestProvider
+    Firebase,
+    FirebasepushProvider,
+    AuthenticationProvider
   ]
 })
 export class AppModule {}

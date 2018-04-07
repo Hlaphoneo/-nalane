@@ -25,3 +25,11 @@ exports.uscp = functions.https.onRequest((req, res) => {
   res.status(200) //server response, avoiding timeout
   res.send();
 });
+
+exports.PushNotify = functions.database.ref('Announcements-nalane2018')
+    .onCreate((snapshot, context) => {
+      // Grab the current value of what was written to the Realtime Database.
+      const original = snapshot.val();
+      console.log(context.params.message)
+
+    });

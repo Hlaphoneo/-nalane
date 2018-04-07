@@ -1,0 +1,71 @@
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-content style="background-color: white;">
+  <ion-item class="cool" no-lines>
+    <!-- <ion-segment align="center" [(ngModel)]="gat" class="segment">
+    <ion-segment-button class="segment-button" value="providers">
+      <span item-end><ion-icon style="color:white !important" class="star1" name="megaphone"></ion-icon></span>
+      <br><small><span  style="color:white">Announcements</span></small>
+
+    </ion-segment-button>
+    <ion-segment-button class="segment-button" value="favourites">
+      <span item-end><ion-icon style="color:white !important;margin-left:10px;" class="star1" name="paper"></ion-icon></span>
+      <br><small><span  style="color:white">News</span></small>
+    </ion-segment-button>
+  </ion-segment> -->
+  </ion-item>
+<!-- <ion-content style="background-color: #F2F2F2;"> -->
+  <!-- <ion-fab class="fab-middle" bottom right  ><button (click)="selectProvider()" ion-fab mini color="green"><ion-icon name="mail" style="z-index-10"></ion-icon></button></ion-fab> -->
+   <div [ngSwitch]="gat" style="margin-top:65px;height:87vh" >
+     <ion-list *ngSwitchCase="'providers'" style="margin-top: 8px !important;" class="segment-data">
+       <!-- <div style="padding: 5px 0 0px 0px" *ngFor = "let Ann of announcements"> -->
+       <div style="padding: 5px 0 0px 0px" *ngFor = "let Ann of this.dataProvider.announcements | async">
+         <ion-item class="cools" no-lines (click)="showOrderModal()">
+           <ion-grid>
+             <ion-row>
+               <ion-col>
+                 <span style="opacity:1">{{Ann.title}}</span><br>
+                 <span style="opacity:6"><small>{{Ann.date}} </small></span>
+                 <br>
+                 <span style="opacity:6"><small>{{Ann.owner}} </small></span>
+               </ion-col>
+               <ion-col>
+                 <ion-icon class="home-icons icon-left" style="margin-top:10px;" name="checkmark-circle"></ion-icon>
+               </ion-col>
+             </ion-row>
+           </ion-grid>
+         </ion-item>
+       </div>
+     </ion-list>
+     <ion-list *ngSwitchCase="'favourites'">
+       <ion-card>
+         <img src="../assets/imgs/news-1.jpg">
+       <ion-card-content>
+         <ion-card-title>
+           <strong>True Paradise on Earth: Unknown Place</strong>
+           </ion-card-title>
+         <p>
+           The most popular industrial group ever, and largely
+           responsible for bringing the music to a mass audience.
+         </p>
+       </ion-card-content>
+     </ion-card>
+       <ion-card>
+       <ion-card-content>
+         <ion-card-title>
+           Nine Inch Nails Live
+           </ion-card-title>
+         <p>
+           The most popular industrial group ever, and largely
+           responsible for bringing the music to a mass audience.
+         </p>
+       </ion-card-content>
+     </ion-card>
+     </ion-list>
+   </div>
+</ion-content>

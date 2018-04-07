@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "washee-6f663"
+    "default": "washee-6f663",
+    "prod-nalane": "nalane-032018"
   }
 }
